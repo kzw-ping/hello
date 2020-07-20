@@ -3,9 +3,9 @@ jobs:
   build:
     docker:
     # Use the same Docker base as the project
-      - image: python:3.6.10
+      - image: circleci/python:3.6.10
 
-    working_directory: ~/hello
+    working_directory: ~/repo
 
     steps:
       - checkout
@@ -23,9 +23,6 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             make install
-            # Install hadolint
-            wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
-                chmod +x /bin/hadolint
 
       - save_cache:
           paths:
